@@ -122,7 +122,8 @@ namespace ZuvioAutoSign
                         }
                         catch(Exception ex)
                         {
-                            Prompt.Error(ex.ToString());
+                            if(ex.Message != "Can't Find rollcall_id value")
+                                Prompt.Error(ex.ToString());
                         }
                                              
                     }
