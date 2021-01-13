@@ -20,9 +20,9 @@ namespace ZuvioAutoSign
     {
         public string account;
         public string password;
-        public string AccessToken;
-        public string UserID;
-        public string Session;
+        private string AccessToken;
+        private string UserID;
+        private string Session;
         public int DelayTime=120;
         private string[] _week = new string[] { "一", "二", "三", "四", "五", "六", "日" };
         public string[,] schedule = new string[7,10];
@@ -52,9 +52,10 @@ namespace ZuvioAutoSign
                 JObject json = JObject.Parse(File.ReadAllText("Setting.json"));
                 account = json["account"].ToString();
                 password = json["password"].ToString();
-                AccessToken = json["AccessToken"].ToString();
-                UserID = json["UserID"].ToString();
-                Session = json["Session"].ToString();
+                Login();
+                //AccessToken = json["AccessToken"].ToString();
+                //UserID = json["UserID"].ToString();
+                //Session = json["Session"].ToString();
                 int.TryParse(json["DelayTime"].ToString(), out DelayTime);
                 Location = JsonConvert.DeserializeObject<Dictionary<string, string>>(json["Location"].ToString());
                 for (int i = 0; i < schedule.GetLength(0); i++)
