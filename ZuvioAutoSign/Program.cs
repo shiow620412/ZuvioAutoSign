@@ -19,7 +19,7 @@ namespace ZuvioAutoSign
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            Console.Title = "Zuvio 自動點名系統 Ver1.0 by.Wind";
+            Console.Title = "Zuvio 自動點名系統 Ver1.2 by.Wind";
             Zuvio zuvio = new Zuvio();                                 
             List<Course> courses = zuvio.GetCourses();
             string select = string.Empty;
