@@ -18,6 +18,7 @@ namespace ZuvioAutoSign
 {
     public class Zuvio
     {
+        private Timer t;
         public string account;
         public string password;
         private string AccessToken;
@@ -77,7 +78,7 @@ namespace ZuvioAutoSign
         public void Start(List<Course> courses)
         {
            
-            Timer t = new Timer((e) =>
+            t = new Timer((e) =>
             {
                 DateTime dt = DateTime.Now;
                 //default 17
@@ -130,6 +131,14 @@ namespace ZuvioAutoSign
                     }
                 }
             }, null, 0, DelayTime*1000);
+
+        }
+        public void Stop()
+        {
+            ManualResetEvent timerDisposed = new ManualResetEvent(false);
+            t.Dispose(timerDisposed);
+            timerDisposed.WaitOne();
+            timerDisposed.Dispose();
 
         }
         public void ModifyLocation(string CourseName)
